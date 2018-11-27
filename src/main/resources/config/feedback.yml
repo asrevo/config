@@ -1,0 +1,28 @@
+---
+
+spring:
+  profiles: prod
+  data:
+    mongodb:
+      database: ${vcap.services.FEEDBACK_MONGODB.credentials.path}
+      port: ${vcap.services.FEEDBACK_MONGODB.credentials.port}
+      password: ${vcap.services.FEEDBACK_MONGODB.credentials.password}
+      username: ${vcap.services.FEEDBACK_MONGODB.credentials.username}
+      host: ${vcap.services.FEEDBACK_MONGODB.credentials.hostname}
+  redis:
+    host: ${vcap.services.FEEDBACK_REDIS.credentials.hostname}
+    password: ${vcap.services.FEEDBACK_REDIS.credentials.password}
+    port: ${vcap.services.FEEDBACK_REDIS.credentials.port}
+  cloud:
+    stream:
+      bindings:
+        ToFeedBack_pop:
+          destination: ToFeedBack.queue
+          group: s1
+---
+
+spring:
+  profiles: dev
+  data:
+    mongodb:
+      database: feedback

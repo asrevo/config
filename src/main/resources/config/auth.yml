@@ -1,0 +1,50 @@
+server:
+  use-forward-headers: true
+  tomcat:
+    protocol-header: X-Forwarded-Proto
+    remote-ip-header: X-Forwarded-For
+    port-header: X-Forwarded-Port
+    protocol-header-https-value: https
+spring:
+  session:
+    store-type: redis
+management:
+  context-path: /actuator
+org:
+  revo:
+    env:
+      users:
+      - email: ashraf1abdelrasool@gmail.com
+        enable: true
+        id: 5bfd3df1ad8ce6617f9bf635
+        imageUrl: /assets/images/a5.jpg
+        info: this is sample info about me you are welcome
+        locked: true
+        name: ashraf
+        password: "{bcrypt}$2a$10$rPUJCZ6TmrrmDmHuIJptm.UIxsUcGm/WegmuwNfXE4eibF/kOEwWu"
+        phone: 1120266849
+        type: 111
+---
+
+spring:
+  profiles: prod
+  data:
+    mongodb:
+      database: ${vcap.services.AUTH_MONGODB.credentials.path}
+      port: ${vcap.services.AUTH_MONGODB.credentials.port}
+      password: ${vcap.services.AUTH_MONGODB.credentials.password}
+      username: ${vcap.services.AUTH_MONGODB.credentials.username}
+      host: ${vcap.services.AUTH_MONGODB.credentials.hostname}
+#  redis:
+#    host:
+#    password:
+#    port:
+
+
+---
+
+spring:
+  profiles: dev
+  data:
+    mongodb:
+      database: auth

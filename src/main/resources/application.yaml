@@ -1,0 +1,49 @@
+management:
+  endpoints:
+    web:
+      exposure:
+        include: ["*"]
+    health:
+      show-details: "ALWAYS"
+cloud:
+  aws:
+    region:
+      auto: false
+      static: us-east-1
+    stack:
+      name: env
+      auto: false
+    credentials:
+      accessKey: ${vcap.services.CLOUD_AWS.credentials.accessKey}
+      secretKey: ${vcap.services.CLOUD_AWS.credentials.secretKey}
+spring:
+  application:
+    name: config
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/asrevo/config
+          username: ashraf1abdelrasool@gmail.com
+          password: password
+          searchPaths: src/main/resources/config
+        native:
+          search-locations: classpath:/config
+  profiles:
+    active: native,cloudformation
+server:
+  port: 8888
+info:
+  app:
+    name: ${spring.application.name}
+logging:
+  file: ${spring.application.name}.log
+org:
+  revo:
+    env:
+      users:
+      - email: ${vcap.services.CONFIG_CREDENTIALS.credentials.username}
+        password: ${vcap.services.CONFIG_CREDENTIALS.credentials.encoded_password}
+        enable: true
+        locked: true
+        type: 111

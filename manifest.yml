@@ -1,0 +1,23 @@
+---
+applications:
+- name: config
+  memory: 1GB
+  disk_quota: 2GB
+  instances: 1
+  routes:
+  - route: configasrevo.cfapps.io
+  buildpack: java_buildpack
+  path: target/config-0.0.1-SNAPSHOT.jar
+  services:
+  - ALL_CLOUDAMQP
+  - AUTH_MONGODB
+  - FEEDBACK_MONGODB
+  - FEEDBACK_REDIS
+  - INDEXING_ELASTICSEARCHDB
+  - TUBE_MONGODB
+  - CLOUD_AWS
+  - CONFIG_CREDENTIALS
+  - EUREKA_CREDENTIALS
+  env:
+    ORG_REVO_ENV_EUREKA_EXTERNALURL: eurekaasrevo.cfapps.io
+    SPRING_PROFILES_ACTIVE: native,cloud,cloudformation

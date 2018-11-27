@@ -1,0 +1,20 @@
+spring:
+  cloud:
+    stream:
+      bindings:
+        ToBento4_hls:
+          destination: ToBento4_hls
+          group: s1
+          contentType: application/json
+        ToBento4_info:
+          destination: ToBento4_info
+          group: s1
+          contentType: application/json
+        ToTube_hls:
+          destination: ToTube_hls
+          group: s1
+          contentType: application/json
+        ToTube_info:
+          destination: ToTube_info
+          group: s1
+          contentType: application/json

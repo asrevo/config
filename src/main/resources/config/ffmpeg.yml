@@ -1,0 +1,16 @@
+spring:
+  cloud:
+    stream:
+      bindings:
+        ToFfmpeg_mp4:
+          destination: ToFfmpeg_mp4
+          group: s1
+          contentType: application/json
+        ToFfmpeg_png:
+          destination: ToFfmpeg_png
+          group: s1
+          contentType: application/json
+        ToBento4_hls:
+          destination: ToBento4_hls
+          group: s1
+          contentType: application/json

@@ -1,0 +1,64 @@
+spring:
+  cloud:
+    stream:
+      bindings:
+        ToBento4_hls:
+          destination: ToBento4_hls
+          group: s1
+          contentType: application/json
+        ToBento4_info:
+          destination: ToBento4_info
+          group: s1
+          contentType: application/json
+        ToTube_hls:
+          destination: ToTube_hls
+          group: s1
+          contentType: application/json
+        ToTube_info:
+          destination: ToTube_info
+          group: s1
+          contentType: application/json
+        ToTube_store:
+          destination: ToTube_store
+          group: s1
+          contentType: application/json
+        ToFfmpeg_mp4:
+          destination: ToFfmpeg_mp4
+          group: s1
+          contentType: application/json
+        ToFfmpeg_png:
+          destination: ToFfmpeg_png
+          group: s1
+          contentType: application/json
+        ToIndexing:
+          destination: ToIndexing
+          group: s1
+          contentType: application/json
+        ToFile:
+          destination: ToFile
+          group: s1
+          contentType: application/json
+  servlet:
+    multipart:
+      max-file-size: 200MB
+cloudfront:
+  keyId: APKAJDXYYEFQIN3QTBYQ
+---
+
+spring:
+  profiles: prod
+  data:
+    mongodb:
+      database: ${vcap.services.TUBE_MONGODB.credentials.path}
+      port: ${vcap.services.TUBE_MONGODB.credentials.port}
+      password: ${vcap.services.TUBE_MONGODB.credentials.password}
+      username: ${vcap.services.TUBE_MONGODB.credentials.username}
+      host: ${vcap.services.TUBE_MONGODB.credentials.hostname}
+
+---
+
+spring:
+  profiles: dev
+  data:
+    mongodb:
+      database: tube

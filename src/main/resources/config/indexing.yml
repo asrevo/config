@@ -1,0 +1,7 @@
+spring:
+  cloud:
+    stream:
+      bindings:
+        ToIndexing:
+          destination: ToIndexing
+          group: s1

@@ -1,0 +1,56 @@
+server:
+  servlet:
+    session:
+      tracking-modes: cookie
+spring:
+  servlet:
+    multipart:
+      max-file-size: 200MB
+#  session:
+#    store-type: redis
+#  redis:
+#    host: redis-15039.c15.us-east-1-2.ec2.cloud.redislabs.com
+#    password: kaAj93Z18akRfQFv
+#    port: 15039
+security:
+  oauth2:
+    client:
+      client-id: revo
+      client-secret: revo
+      access-token-uri: http://auth/auth/oauth/token
+      user-authorization-uri: /auth/oauth/authorize
+      scope: read
+zuul:
+  routes:
+    tube:
+      path: /tube/**
+      stripPrefix: true
+    bento4:
+      path: /bento4/**
+      stripPrefix: true
+    ffmpeg:
+      path: /ffmpeg/**
+      stripPrefix: true
+    file:
+      path: /file/**
+      stripPrefix: true
+    feedback:
+      path: /feedback/**
+      stripPrefix: true
+    auth:
+      path: /auth/**
+      stripPrefix: false
+      sensitive-headers:
+    indexing:
+      path: /indexing/**
+      stripPrefix: true
+hystrix:
+  command:
+    tube:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000
+ribbon:
+  ReadTimeout: 60000
+  ConnectTimeout: 60000

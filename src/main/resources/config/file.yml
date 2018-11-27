@@ -1,0 +1,15 @@
+spring:
+  cloud:
+    stream:
+      bindings:
+        ToTube_store:
+          destination: ToTube_store
+          group: s1
+          contentType: application/json
+        ToFile:
+          destination: ToFile
+          group: s1
+          contentType: application/json
+  servlet:
+    multipart:
+      max-file-size: 200MB
