@@ -14,3 +14,11 @@ spring:
           destination: ToBento4_hls
           group: s1
           contentType: application/json
+      rabbit:
+        bindings:
+          ToFfmpeg_mp4:
+            consumer:
+              max-priority: 20
+          ToFfmpeg_png:
+            consumer:
+              max-priority: 20
