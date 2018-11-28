@@ -19,6 +19,3 @@ spring:
           ToFfmpeg_mp4:
             consumer:
               max-priority: 20
-          ToFfmpeg_png:
-            consumer:
-              max-priority: 20
