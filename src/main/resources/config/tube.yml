@@ -14,6 +14,10 @@ spring:
           destination: tube.store
           group: s1
           contentType: application/json
+        ffmpeg_queue:
+          destination: ffmpeg.queue
+          group: s1
+          contentType: application/json
         indexing_queue:
           destination: indexing.queue
           group: s1
