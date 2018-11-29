@@ -2,20 +2,28 @@ spring:
   cloud:
     stream:
       bindings:
-        ToFfmpeg_mp4:
-          destination: ToFfmpeg_mp4
+        ffmpeg_queue:
+          destination: ffmpeg.queue
           group: s1
           contentType: application/json
-        ToFfmpeg_png:
-          destination: ToFfmpeg_png
+        ffmpeg_converter_pop:
+          destination: ffmpeg.converter.queue
           group: s1
           contentType: application/json
-        ToBento4_hls:
-          destination: ToBento4_hls
+        ffmpeg_converter_push:
+          destination: ffmpeg.converter.queue
+          group: s1
+          contentType: application/json
+        bento4_hls:
+          destination: bento4.hls
+          group: s1
+          contentType: application/json
+        tube_info:
+          destination: tube.info
           group: s1
           contentType: application/json
       rabbit:
         bindings:
-          ToFfmpeg_mp4:
+          ffmpeg_converter_pop:
             consumer:
               max-priority: 20

@@ -2,12 +2,12 @@ spring:
   cloud:
     stream:
       bindings:
-        ToTube_store:
-          destination: ToTube_store
+        tube_store:
+          destination: tube.store
           group: s1
           contentType: application/json
-        ToFile:
-          destination: ToFile
+        file_queue:
+          destination: file.queue
           group: s1
           contentType: application/json
   servlet:

@@ -2,40 +2,24 @@ spring:
   cloud:
     stream:
       bindings:
-        ToBento4_hls:
-          destination: ToBento4_hls
+        bento4_hls:
+          destination: bento4.hls
           group: s1
           contentType: application/json
-        ToBento4_info:
-          destination: ToBento4_info
+        tube_info:
+          destination: tube.info
           group: s1
           contentType: application/json
-        ToTube_hls:
-          destination: ToTube_hls
+        tube_store:
+          destination: tube.store
           group: s1
           contentType: application/json
-        ToTube_info:
-          destination: ToTube_info
+        indexing_queue:
+          destination: indexing.queue
           group: s1
           contentType: application/json
-        ToTube_store:
-          destination: ToTube_store
-          group: s1
-          contentType: application/json
-        ToFfmpeg_mp4:
-          destination: ToFfmpeg_mp4
-          group: s1
-          contentType: application/json
-        ToFfmpeg_png:
-          destination: ToFfmpeg_png
-          group: s1
-          contentType: application/json
-        ToIndexing:
-          destination: ToIndexing
-          group: s1
-          contentType: application/json
-        ToFile:
-          destination: ToFile
+        file_queue:
+          destination: file.queue
           group: s1
           contentType: application/json
   servlet:

@@ -16,8 +16,8 @@ spring:
   cloud:
     stream:
       bindings:
-        ToFeedBack_pop:
-          destination: ToFeedBack.queue
+        feedBack_queue:
+          destination: feedBack.queue
           group: s1
 ---
 

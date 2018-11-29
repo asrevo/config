@@ -2,6 +2,6 @@ spring:
   cloud:
     stream:
       bindings:
-        ToIndexing:
-          destination: ToIndexing
+        indexing_queue:
+          destination: indexing.queue
           group: s1
