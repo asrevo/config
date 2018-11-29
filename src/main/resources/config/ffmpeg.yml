@@ -7,11 +7,11 @@ spring:
           group: s1
           contentType: application/json
         ffmpeg_converter_pop:
-          destination: ffmpeg.converter.queue
+          destination: ffmpeg.converter
           group: s1
           contentType: application/json
         ffmpeg_converter_push:
-          destination: ffmpeg.converter.queue
+          destination: ffmpeg.converter
           group: s1
           contentType: application/json
         bento4_hls:
