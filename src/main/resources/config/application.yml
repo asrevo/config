@@ -10,8 +10,8 @@ spring:
   cloud:
     stream:
       bindings:
-        feedBack_queue:
-          destination: feedBack.queue
+        feedback_queue:
+          destination: feedback.queue
           group: s1
           contentType: application/json
 
