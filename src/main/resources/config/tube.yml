@@ -2,8 +2,8 @@ spring:
   cloud:
     stream:
       bindings:
-        bento4_hls:
-          destination: bento4.hls
+        tube_hls:
+          destination: tube.hls
           group: s1
           contentType: application/json
         tube_info:
