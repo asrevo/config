@@ -27,7 +27,7 @@ management:
       exposure:
         include: ["*"]
     health:
-      show-details: "ALWAYS"
+      show-details: always
 security:
   oauth2:
     resource:
