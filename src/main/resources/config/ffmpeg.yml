@@ -27,6 +27,6 @@ spring:
           ffmpeg_converter_pop:
             consumer:
               max-priority: 20
-            concurrency: 1
-            maxAttempts: 1
+              concurrency: 1
+              maxAttempts: 1
 logo: asrevo
