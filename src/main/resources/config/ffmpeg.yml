@@ -28,5 +28,6 @@ spring:
             consumer:
               max-priority: 20
               concurrency: 1
-              maxAttempts: 1
+              maxConcurrency: 1
+              maxAttempts: 0
 logo: asrevo
