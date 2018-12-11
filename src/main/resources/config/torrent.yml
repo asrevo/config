@@ -1,0 +1,11 @@
+spring:
+  cloud:
+    stream:
+      bindings:
+        torrent_queue:
+          destination: torrent.queue
+          group: s1
+          contentType: application/json
+  servlet:
+    multipart:
+      max-file-size: 200MB
