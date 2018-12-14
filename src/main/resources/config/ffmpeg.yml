@@ -14,14 +14,23 @@ spring:
           destination: ffmpeg.converter
           group: s1
           contentType: application/json
-        bento4_hls:
-          destination: bento4.hls
+        ffmpeg_hls_push:
+          destination: ffmpeg.hls
           group: s1
           contentType: application/json
         tube_info:
           destination: tube.info
           group: s1
           contentType: application/json
+        ffmpeg_hls_pop:
+          destination: ffmpeg.hls
+          group: s1
+          contentType: application/json
+        tube_hls:
+          destination: tube.hls
+          group: s1
+          contentType: application/json
+
       rabbit:
         bindings:
           ffmpeg_converter_pop:
