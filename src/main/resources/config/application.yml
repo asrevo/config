@@ -52,6 +52,8 @@ cloud:
       name: env
       auto: false
 
+cloudfront:
+  keyId: APKAJDXYYEFQIN3QTBYQ
 info:
   app:
     name: ${spring.application.name}
