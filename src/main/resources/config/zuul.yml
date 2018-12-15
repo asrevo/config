@@ -25,9 +25,6 @@ zuul:
     tube:
       path: /tube/**
       stripPrefix: true
-    bento4:
-      path: /bento4/**
-      stripPrefix: true
     ffmpeg:
       path: /ffmpeg/**
       stripPrefix: true
