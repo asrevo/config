@@ -41,9 +41,6 @@ zuul:
       path: /auth/**
       stripPrefix: false
       sensitive-headers:
-    indexing:
-      path: /indexing/**
-      stripPrefix: true
 hystrix:
   command:
     tube:
