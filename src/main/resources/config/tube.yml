@@ -18,8 +18,8 @@ spring:
           destination: ffmpeg.queue
           group: s1
           contentType: application/json
-        indexing_queue:
-          destination: indexing.queue
+        feedback_index:
+          destination: feedback.index
           group: s1
           contentType: application/json
         file_queue:

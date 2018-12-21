@@ -13,6 +13,12 @@ spring:
     host: ${vcap.services.FEEDBACK_REDIS.credentials.hostname}
     password: ${vcap.services.FEEDBACK_REDIS.credentials.password}
     port: ${vcap.services.FEEDBACK_REDIS.credentials.port}
+  cloud:
+    stream:
+      bindings:
+        feedback_index:
+          destination: feedback.index
+          group: s1
 ---
 
 spring:
