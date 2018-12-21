@@ -7,14 +7,6 @@ spring:
     password: ${vcap.services.ALL_CLOUDAMQP.credentials.password}
     host: ${vcap.services.ALL_CLOUDAMQP.credentials.hostname}
     virtual-host: ${vcap.services.ALL_CLOUDAMQP.credentials.path}
-  cloud:
-    stream:
-      bindings:
-        feedback_queue:
-          destination: feedback.queue
-          group: s1
-          contentType: application/json
-
 ---
 
 spring:
