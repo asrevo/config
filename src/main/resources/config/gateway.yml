@@ -1,0 +1,74 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: auth
+        uri: lb:http://auth
+        predicates:
+        - Path=/auth/**
+        filters:
+        - SaveSession
+      - id: tube
+        uri: lb:http://tube
+        predicates:
+        - Path=/tube/**
+        filters:
+        - StripPrefix=1
+      - id: feedback
+        uri: lb:http://feedback
+        predicates:
+        - Path=/feedback/**
+        filters:
+        - StripPrefix=1
+      - id: file
+        uri: lb:http://file
+        predicates:
+        - Path=/file/**
+        filters:
+        - StripPrefix=1
+      - id: ffmpeg
+        uri: lb:http://ffmpeg
+        predicates:
+        - Path=/ffmpeg/**
+        filters:
+        - StripPrefix=1
+      - id: torrent
+        uri: lb:http://torrent
+        predicates:
+        - Path=/torrent/**
+        filters:
+        - StripPrefix=1
+  security:
+    oauth2:
+      client:
+        registration:
+          login-client:
+            provider: auth
+            client-id: revo
+            client-secret: revo
+            authorization-grant-type: authorization_code
+            redirect-uri-template: "{baseUrl}/login/oauth2/code/{registrationId}"
+            scope: read
+        provider:
+          auth:
+            authorization-uri: http://${vcap.application.uris[0]:localhost:${server.port}}/auth/oauth/authorize
+            token-uri: http://${vcap.application.uris[0]:localhost:${server.port}}/auth/oauth/token
+            user-info-uri: http://${vcap.application.uris[0]:localhost:${server.port}}/auth/user
+            user-name-attribute: username
+            jwk-set-uri: http://${vcap.application.uris[0]:localhost:${server.port}}/auth/.well-known/jwks.json
+#  session:
+#    store-type: redis
+#  redis:
+#    host: redis-15039.c15.us-east-1-2.ec2.cloud.redislabs.com
+#    password: kaAj93Z18akRfQFv
+#    port: 15039
+hystrix:
+  command:
+    tube:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000
+ribbon:
+  ReadTimeout: 60000
+  ConnectTimeout: 60000
