@@ -6,8 +6,8 @@ spring:
         uri: lb:http://auth
         predicates:
         - Path=/auth/**
-        filters:
-        - SaveSession
+#        filters:
+#        - SaveSession
       - id: tube
         uri: lb:http://tube
         predicates:
