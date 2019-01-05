@@ -3,11 +3,11 @@ spring:
     gateway:
       routes:
       - id: auth
-        uri: lb:http://auth
+        uri: lb://auth
         predicates:
         - Path=/auth/**
-#        filters:
-#        - SaveSession
+        filters:
+        - SaveSession
       - id: tube
         uri: lb:http://tube
         predicates:
