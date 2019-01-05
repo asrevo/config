@@ -8,7 +8,7 @@ spring:
         - Path=/auth/**
         filters:
         - SaveSession
-        - PreserveHostHeader
+#        - PreserveHostHeader
       - id: tube
         uri: lb:http://tube
         predicates:
