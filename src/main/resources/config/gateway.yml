@@ -3,11 +3,12 @@ spring:
     gateway:
       routes:
       - id: auth
-        uri: lb://auth
+        uri: lb:http://auth
         predicates:
         - Path=/auth/**
         filters:
         - SaveSession
+        - PreserveHostHeader
       - id: tube
         uri: lb:http://tube
         predicates:
