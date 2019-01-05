@@ -15,12 +15,14 @@ spring:
         - Path=/tube/**
         filters:
         - StripPrefix=1
+        - RemoveResponseHeader=Set-Cookie
       - id: feedback
         uri: lb:http://feedback
         predicates:
         - Path=/feedback/**
         filters:
         - StripPrefix=1
+        - RemoveResponseHeader=Set-Cookie
       - id: file
         uri: lb:http://file
         predicates:
