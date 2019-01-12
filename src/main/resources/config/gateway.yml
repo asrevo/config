@@ -57,7 +57,7 @@ spring:
             authorization-uri: http://${vcap.application.uris[0]:localhost:${server.port}}/auth/oauth/authorize
             token-uri: http://${vcap.application.uris[0]:localhost:${server.port}}/auth/oauth/token
             user-info-uri: http://${vcap.application.uris[0]:localhost:${server.port}}/auth/user
-            user-name-attribute: username
+            user-name-attribute: sub
             jwk-set-uri: http://${vcap.application.uris[0]:localhost:${server.port}}/auth/.well-known/jwks.json
 #  session:
 #    store-type: redis
