@@ -11,6 +11,11 @@ spring:
 
 spring:
   profiles: default
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://auth-responsible-oribi.cfapps.io/auth/.well-known/jwks.json
 management:
   security:
     enabled: false
