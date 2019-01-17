@@ -29,7 +29,7 @@ spring:
         - Path=/file/**
         filters:
         - StripPrefix=1
-        - RemoveResponseHeader=Set-Cookie
+#        - RemoveResponseHeader=Set-Cookie
       - id: ffmpeg
         uri: lb:http://ffmpeg
         predicates:
