@@ -1,8 +1,10 @@
 package org.revo.Config;
 
+/*
 import com.amazonaws.services.cloudformation.AmazonCloudFormation;
 import com.amazonaws.services.cloudformation.model.Export;
 import com.amazonaws.services.cloudformation.model.ListExportsRequest;
+*/
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.revo.Config.Domain.Base;
 import org.revo.Config.Domain.VCAP;
@@ -98,6 +100,7 @@ public class Util {
         return source;
     }
 
+/*
     @Bean("simpPropertySource")
     @Profile("cloudformation")
     public PropertySource propertySource(AmazonCloudFormation amazonCloudFormation, org.springframework.core.env.Environment environment) {
@@ -122,6 +125,7 @@ public class Util {
         }
         return stringStringHashMap;
     }
+*/
 
 
     @Bean
