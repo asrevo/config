@@ -35,12 +35,12 @@ public class Util {
 
     @Bean
     @Profile("cloudformation")
-    EnvironmentRepository nativeEnvironmentRepository(@Qualifier("simpPropertySource") PropertySource propertySource, ConfigurableEnvironment configurableEnvironment, NativeEnvironmentProperties nativeEnvironmentRepository) {
+    EnvironmentRepository nativeEnvironmentRepository(/*@Qualifier("simpPropertySource") PropertySource propertySource,*/ ConfigurableEnvironment configurableEnvironment, NativeEnvironmentProperties nativeEnvironmentRepository) {
         return new NativeEnvironmentRepository(configurableEnvironment, nativeEnvironmentRepository) {
             @Override
             public Environment findOne(String config, String profile, String label) {
                 Environment one = super.findOne(config, profile, label);
-                one.addFirst(propertySource);
+//                one.addFirst(propertySource);
                 configurableEnvironment.getSystemEnvironment().entrySet().stream()
                         .filter(it -> it.getKey().equalsIgnoreCase("VCAP_SERVICES"))
                         .map(Entry::getValue)
