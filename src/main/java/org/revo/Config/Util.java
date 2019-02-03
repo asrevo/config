@@ -5,6 +5,7 @@ import com.amazonaws.services.cloudformation.AmazonCloudFormation;
 import com.amazonaws.services.cloudformation.model.Export;
 import com.amazonaws.services.cloudformation.model.ListExportsRequest;
 */
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.revo.Config.Domain.Base;
 import org.revo.Config.Domain.VCAP;
@@ -35,12 +36,12 @@ public class Util {
 
     @Bean
     @Profile("cloudformation")
-    EnvironmentRepository nativeEnvironmentRepository(/*@Qualifier("simpPropertySource") PropertySource propertySource,*/ ConfigurableEnvironment configurableEnvironment, NativeEnvironmentProperties nativeEnvironmentRepository) {
+    EnvironmentRepository nativeEnvironmentRepository(@Qualifier("simpPropertySource") PropertySource propertySource, ConfigurableEnvironment configurableEnvironment, NativeEnvironmentProperties nativeEnvironmentRepository) {
         return new NativeEnvironmentRepository(configurableEnvironment, nativeEnvironmentRepository) {
             @Override
             public Environment findOne(String config, String profile, String label) {
                 Environment one = super.findOne(config, profile, label);
-//                one.addFirst(propertySource);
+                one.addFirst(propertySource);
                 configurableEnvironment.getSystemEnvironment().entrySet().stream()
                         .filter(it -> it.getKey().equalsIgnoreCase("VCAP_SERVICES"))
                         .map(Entry::getValue)
@@ -100,18 +101,19 @@ public class Util {
         return source;
     }
 
-/*
     @Bean("simpPropertySource")
     @Profile("cloudformation")
-    public PropertySource propertySource(AmazonCloudFormation amazonCloudFormation, org.springframework.core.env.Environment environment) {
-        List<Export> exports = amazonCloudFormation.listExports(new ListExportsRequest()).getExports();
-        Map<String, Object> source = loadYouProperties(environment.getProperty("cloud.aws.stack.name"), exports);
-        for (String s : Arrays.asList("cloud.aws.credentials.accessKey", "cloud.aws.credentials.secretKey", "org.revo.env.eureka.externalurl")) {
+    public PropertySource propertySource(/*AmazonCloudFormation amazonCloudFormation,*/ org.springframework.core.env.Environment environment) {
+//        List<Export> exports = amazonCloudFormation.listExports(new ListExportsRequest()).getExports();
+        Map<String, Object> source = new HashMap<>();
+//        Map<String, Object> source = loadYouProperties(environment.getProperty("cloud.aws.stack.name"), exports);
+        for (String s : Arrays.asList(/*"cloud.aws.credentials.accessKey", "cloud.aws.credentials.secretKey",*/ "org.revo.env.eureka.externalurl")) {
             source.put(s, environment.getProperty(s, ""));
         }
         return new PropertySource("cloudformation", source);
     }
 
+/*
 
     private Map<String, Object> loadYouProperties(String stackPrefix, List<Export> exports) {
 
